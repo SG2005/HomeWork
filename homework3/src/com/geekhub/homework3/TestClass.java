@@ -5,7 +5,7 @@
  */
 
 
-package com.geekhub.homework;
+package com.geekhub.homework3;
 
 import java.util.ArrayList;
 import java.util.List;

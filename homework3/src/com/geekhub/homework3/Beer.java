@@ -5,7 +5,7 @@
  */
 
 
-package com.geekhub.homework;
+package com.geekhub.homework3;
 
 public class Beer extends Product {
     private int alcoholByVolume;

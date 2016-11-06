@@ -5,7 +5,7 @@
  */
 
 
-package com.geekhub.homework;
+package com.geekhub.homework3;
 
 public class SweetWater extends Product {
     private String color;

@@ -5,7 +5,7 @@
  */
 
 
-package com.geekhub.homework;
+package com.geekhub.homework3;
 
 import java.util.Collections;
 import java.util.Comparator;
