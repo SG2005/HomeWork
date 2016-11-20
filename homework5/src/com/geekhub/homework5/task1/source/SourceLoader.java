@@ -15,9 +15,9 @@ public class SourceLoader {
     }
 
     public String loadSource(String pathToSource) throws SourceLoadingException {
-        for (int i = 0; i < sourceProviders.size(); i++) {
-            if (sourceProviders.get(i).isAllowed(pathToSource)) {
-                return sourceProviders.get(i).load(pathToSource);
+        for (SourceProvider sourceProvider : sourceProviders) {
+            if (sourceProvider.isAllowed(pathToSource)) {
+                return sourceProvider.load(pathToSource);
             }
         }
         throw new SourceLoadingException("Path to source is invalid!");

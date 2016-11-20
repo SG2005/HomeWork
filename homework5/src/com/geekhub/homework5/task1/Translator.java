@@ -1,9 +1,12 @@
 package com.geekhub.homework5.task1;
 
+import com.geekhub.homework5.task1.source.SourceLoadingException;
 import com.geekhub.homework5.task1.source.URLSourceProvider;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Provides utilities for translating texts to russian language.<br/>
@@ -31,13 +34,15 @@ public class Translator {
      * @return translated text
      * @throws IOException
      */
-    public String translate(String original) throws IOException {
+    public String translate(String original) throws IOException, TranslateException {
+        Matcher matcher = Pattern.compile("[\\w\\u005F\\u002E]+", Pattern.UNICODE_CASE).matcher(original);
+        if ((original.isEmpty()) || (!matcher.matches())) {
+            throw new TranslateException("Translate exception!");
+        }
         try {
             return parseContent(urlSourceProvider.load(prepareURL(original)));
-        } catch (IOException e) {
-            throw new TranslateException("Translate is failed!");
-        } catch (StringIndexOutOfBoundsException e) {
-            throw new TranslateException("Translate is failed!");
+        } catch (SourceLoadingException e) {
+            throw new IOException(e.getMessage());
         }
     }
 
@@ -68,12 +73,7 @@ public class Translator {
      * @return encoded text
      */
     private String encodeText(String text) throws IOException {
-        try {
-            text = URLEncoder.encode(text, "UTF-8");
-        } catch (IOException e) {
-            System.out.println("Encode is failed!");
-            return null;
-        }
+        text = URLEncoder.encode(text, "UTF-8");
         return text;
     }
 }

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class TranslatorController {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, TranslateException {
         //initialization
         SourceLoader sourceLoader = new SourceLoader();
         Translator translator = new Translator(new URLSourceProvider());
@@ -21,9 +21,10 @@ public class TranslatorController {
                 System.out.println("Original: " + source);
                 System.out.println("Translation: " + translation);
                 break;
-            } catch (IOException e) {
+            } catch (Exception e) {
                 System.out.println(e.getMessage());
-                System.out.println("Please, enter the valid path!");
+                System.out.println("Please, enter the another path!" +
+                        " Or type \"exit\" to exit from program");
             }
         }
     }

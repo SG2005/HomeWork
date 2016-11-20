@@ -20,15 +20,15 @@ public class FileSourceProvider implements SourceProvider {
 
     @Override
     public String load(String pathToSource) throws SourceLoadingException {
-        String text = "";
+        StringBuilder text = new StringBuilder();
         try (InputStream in = new FileInputStream(pathToSource)) {
             int data;
             while ((data = in.read()) != -1) {
-                text += (char) data;
+                text.append((char) data);
             }
         } catch (IOException e) {
-            throw new SourceLoadingException("Loading of text from file source is failed!");
+            throw new SourceLoadingException(e.getMessage());
         }
-        return text;
+        return text.toString();
     }
 }
