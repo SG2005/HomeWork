@@ -36,6 +36,8 @@ public class Translator {
             return parseContent(urlSourceProvider.load(prepareURL(original)));
         } catch (IOException e) {
             throw new TranslateException("Translate is failed!");
+        } catch (StringIndexOutOfBoundsException e) {
+            throw new TranslateException("Translate is failed!");
         }
     }
 
