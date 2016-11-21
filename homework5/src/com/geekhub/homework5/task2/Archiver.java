@@ -9,7 +9,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class Archiver {
-
     private FileManager fileManager;
 
     public Archiver(FileManager fileManager) {

@@ -2,7 +2,6 @@ package com.geekhub.homework5.task2;
 
 import java.io.IOException;
 
-
 public class ArchiveController {
     public static void main(String[] args) throws IOException {
         while (true) {

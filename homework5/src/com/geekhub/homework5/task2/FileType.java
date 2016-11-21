@@ -1,6 +1,5 @@
 package com.geekhub.homework5.task2;
 
-
 public enum FileType {
 
     AUDIO {
